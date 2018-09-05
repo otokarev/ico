@@ -29,6 +29,11 @@ contract FlatFiatPricing is PricingStrategy {
     oneTokenInFiat = _oneTokenInFiat;
   }
 
+  /** Interface declaration. */
+  function isFlatFiatPricingStrategy() public constant returns (bool) {
+    return true;
+  }
+
   /**
    * @dev Throws if called by any account other than the owner.
    */
