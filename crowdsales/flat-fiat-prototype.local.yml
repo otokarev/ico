@@ -1,0 +1,154 @@
+# A testnet deployment for the crowdsale contracts
+testnet:
+
+    # Chain we are connected to.
+    # Either "mainnet" or "ropsten".
+    # Affects Etherscan verification process only.
+    chain: ganache
+
+    # Do we perform deployed contract source code verification on etherscan.io service.
+    # This is a semi automatic process using a Firefox browser.
+    verify_on_etherscan: no
+
+    solc:
+
+        # This is the Solidity version tag we verify on EtherScan.
+        # For available versions see
+        # https://kovan.etherscan.io/verifyContract2
+        #
+        # See values in Compiler drop down.
+        # You can also get the local compiler version with:
+        #
+        #     solc --version
+        #
+        # Note that for EtherScan you need to add letter "v" at the front of the version
+        #
+        # Note: You need to have correct optmization settings for the compiler
+        # in populus.json that matches what EtherScan is expecting.
+        #
+        version: v0.4.14+commit.c2215d46
+
+        #
+        # We supply these to EtherScan as the solc settings we used to compile the contract.
+        # They must match values in populus.json compilication / backends section.
+        #
+        optimizations:
+            optimizer: true
+            runs: 500
+
+    #
+    # Contracts section defines different smart contracts that
+    # are required to run the ICO.
+    #
+    contracts:
+
+        # Team multisignature wallet.
+        #
+        # Replace with your predeployed multisignature wallet contract address.
+        #
+        # We assume this wallet has been deployed beforehand
+        # using wallet.gnosis.pm service and your team members
+        # have been set as the owners of this wallet.
+        #
+        # For testing purposes, e.g. on Kovan network,
+        # you can use any account on your geth / Parity here.
+        #
+        # Note: As the writing of this wallet.gnosis.pm service
+        # works only with mainnet.
+        #
+        team_multisig:
+            contract_name: MultiSigWallet
+            contract_file: GnosisWallet.sol
+            #address: "0x6ee1e300e3b50f0d673e33b3cc3ac559101106e3"
+            arguments:
+                _owners:
+                    - "0xa0419f9401d52703c5bbb388641b6ff42b42fc88"
+                _required: 1
+        token:
+            contract_name: CrowdsaleToken
+            contract_file: CrowdsaleToken.sol
+            #address: "0xef79a5df70f58040377f333060702ce00971c146"
+            arguments:
+                _name: HUI-testnet
+                _symbol: HUI
+                _initialSupply: 0
+                _decimals: 18  # Ethereum tokens are standardizing around 18 decimals
+                _mintable: true  # Tokens will be dynamically created over the token sale
+        pricing_strategy:
+            contract_name: FlatFiatPricing
+            contract_file: FlatFiatPricing.sol
+            #address: "0xee8ba4a99cdf9002a130423a0a41bfa0e2fcd4ff"
+            arguments:
+                _oneTokenInFiat: 1
+        #crowdsale:
+        #    contract_name: UncappedCrowdsale
+        #    contract_file: UncappedCrowdsale.sol
+        #    #address: "0x9b75f36d5e1ba7d7c6ecec8736122c89becf3193"
+        #    arguments:
+        #        _token: "{{contracts.token.address}}"
+        #        _pricingStrategy: "{{contracts.pricing_strategy.address}}"
+        #        _multisigWallet: "{{contracts.team_multisig.address}}"
+        #        _start: "{{ timestamp(datetime(2017, 4, 15, 16, 0)) }}"
+        #        _end: "{{ timestamp(datetime(2019, 4, 15, 16, 0)) + 30*24*3600 }}"
+        #        _minimumFundingGoal: 1
+        crowdsale:
+            contract_name: MintedTokenCapped2Crowdsale
+            contract_file: MintedTokenCapped2Crowdsale.sol
+            #address: "0x9b75f36d5e1ba7d7c6ecec8736122c89becf3193"
+            arguments:
+                _token: "{{contracts.token.address}}"
+                _pricingStrategy: "{{contracts.pricing_strategy.address}}"
+                _multisigWallet: "{{contracts.team_multisig.address}}"
+                _start: "{{ timestamp(datetime(2017, 4, 15, 16, 0)) }}"
+                _end: "{{ timestamp(datetime(2019, 4, 15, 16, 0)) + 30*24*3600 }}"
+                _minimumFundingGoal: 1
+                _sellableTokensTranches:
+                    - 0
+                    - 2
+        finalize_agent:
+            contract_name: NullFinalizeAgent
+            contract_file: NullFinalizeAgent.sol
+            #address: "0x5e010caf8272690cc3036e55707841ead4744885"
+            arguments:
+                _crowdsale: "{{contracts.crowdsale.address}}"
+
+    # Post-deployment actions connect contracts together.
+    # They set ownership and allowed actions, so that contracts can interact
+    post_actions: |
+        # Config pricing strategy
+        pricing_strategy.transact({"from": deploy_address}).setOneFiatInWeis(to_wei(1, 'ether'))
+
+        # Enable new token minting by a crowdsale contract
+        token.transact({"from": deploy_address}).setMintAgent(crowdsale.address, True)
+
+        # Set actions what happen at the end of the crodsale.
+        crowdsale.transact({"from": deploy_address}).setFinalizeAgent(finalize_agent.address)
+        token.transact({"from": deploy_address}).setReleaseAgent(finalize_agent.address)
+
+        # Set the team multisig address as the upgraade master for the token
+        token.transact({"from": deploy_address}).transferOwnership(team_multisig.address)
+
+        # Run test buy() transaction
+        print(crowdsale.call().tranches(0))
+        print(crowdsale.call().isLastTrancheUnlocked())
+        print(crowdsale.call().maximumSellableTokens())
+        print(crowdsale.call().getState())
+
+        crowdsale.transact({"from": deploy_address, "value": to_wei(1, "ether")}).buy()
+        crowdsale.transact({"from": deploy_address, "value": to_wei(1, "ether")}).buy()
+
+        print(crowdsale.call().tokensSold())
+
+        log = [crowdsale.call().logs(i) for i in range(0, crowdsale.call().logsLength())]
+        print(log)
+        events = crowdsale.pastEvents('Invested').get();
+        print(events)
+
+    # Make sure that everything we have deployed all contracts in good state
+    # and their internal state is sane
+    verify_actions: |
+        assert crowdsale.call().tokensSold() == 2
+        assert crowdsale.call().weiRaised() == to_wei(2, "ether")
+        # assert token.call().owner() == team_multisig.address
+        # assert crowdsale.call().owner() == team_multisig.address
+        # assert crowdsale.call().getState() == CrowdsaleState.Funding
