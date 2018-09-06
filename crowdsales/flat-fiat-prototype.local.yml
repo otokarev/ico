@@ -92,8 +92,8 @@ testnet:
         #        _end: "{{ timestamp(datetime(2019, 4, 15, 16, 0)) + 30*24*3600 }}"
         #        _minimumFundingGoal: 1
         crowdsale:
-            contract_name: MintedTokenCapped2Crowdsale
-            contract_file: MintedTokenCapped2Crowdsale.sol
+            contract_name: BeamCrowdsale
+            contract_file: BeamCrowdsale.sol
             #address: "0x9b75f36d5e1ba7d7c6ecec8736122c89becf3193"
             arguments:
                 _token: "{{contracts.token.address}}"
@@ -102,9 +102,6 @@ testnet:
                 _start: "{{ timestamp(datetime(2017, 4, 15, 16, 0)) }}"
                 _end: "{{ timestamp(datetime(2019, 4, 15, 16, 0)) + 30*24*3600 }}"
                 _minimumFundingGoal: 1
-                _sellableTokensTranches:
-                    - 0
-                    - 2
         finalize_agent:
             contract_name: NullFinalizeAgent
             contract_file: NullFinalizeAgent.sol
@@ -129,9 +126,6 @@ testnet:
         token.transact({"from": deploy_address}).transferOwnership(team_multisig.address)
 
         # Run test buy() transaction
-        print(crowdsale.call().tranches(0))
-        print(crowdsale.call().isLastTrancheUnlocked())
-        print(crowdsale.call().maximumSellableTokens())
         print(crowdsale.call().getState())
 
         crowdsale.transact({"from": deploy_address, "value": to_wei(1, "ether")}).buy()
@@ -139,8 +133,6 @@ testnet:
 
         print(crowdsale.call().tokensSold())
 
-        log = [crowdsale.call().logs(i) for i in range(0, crowdsale.call().logsLength())]
-        print(log)
         events = crowdsale.pastEvents('Invested').get();
         print(events)
 

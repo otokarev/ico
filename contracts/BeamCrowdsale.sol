@@ -24,14 +24,14 @@ import "./FlatFiatPricing.sol";
  */
 contract BeamCrowdsale is Crowdsale {
 
-  function BeamCrowdsale(address _token, FlatFiatPricing _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
+  function BeamCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
 
   }
 
-  function setPricingStrategy(FlatFiatPricing _pricingStrategy) onlyOwner {
+  function setPricingStrategy(PricingStrategy _pricingStrategy) onlyOwner {
     pricingStrategy = _pricingStrategy;
 
-    if(!pricingStrategy.isFlatFiatPricingStrategy()) {
+    if(!FlatFiatPricing(pricingStrategy).isFlatFiatPricingStrategy()) {
       throw;
     }
   }
@@ -65,7 +65,7 @@ contract BeamCrowdsale is Crowdsale {
    *
    * @return tokensBought How mony tokens were bought
    */
-  function buyTokensForFiat(address receiver, uint128 customerId, uint256 fiatAmount) stopInEmergency onlyOwner public returns(uint tokensBought) {
+  function buyTokensForFiat(address receiver, uint128 customerId, uint fiatAmount) stopInEmergency onlyOwner public returns(uint tokensBought) {
 
     // Determine if it's a good time to accept investment from this participant
     if(getState() == State.PreFunding) {
@@ -81,7 +81,9 @@ contract BeamCrowdsale is Crowdsale {
       throw;
     }
 
-    uint weiAmount = pricingStrategy.oneFiatInWeis * fiatAmount;
+    FlatFiatPricing pricing = FlatFiatPricing(pricingStrategy);
+    uint weiAmount = pricing.oneFiatInWeis() * fiatAmount;
+    uint tokenAmount = pricing.calculatePrice(weiAmount, weiRaised - presaleWeiRaised, tokensSold, receiver, token.decimals());
 
     // Dust transaction
     require(tokenAmount != 0);

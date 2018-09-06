@@ -74,7 +74,7 @@ registrar.json
 *.ipynb
 
 # Crowdsale definitions
-crowdsales/*.yml
+#crowdsales/*.yml
 *.csv
 
 # Customer test cases
