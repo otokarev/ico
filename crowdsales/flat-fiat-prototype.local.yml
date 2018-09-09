@@ -62,7 +62,7 @@ testnet:
             #address: "0x6ee1e300e3b50f0d673e33b3cc3ac559101106e3"
             arguments:
                 _owners:
-                    - "0xa0419f9401d52703c5bbb388641b6ff42b42fc88"
+                    - "0x26e07f588c77fe9cf3936b80d5abfb80aa92ed19"
                 _required: 1
         token:
             contract_name: CrowdsaleToken
@@ -129,7 +129,7 @@ testnet:
         print(crowdsale.call().getState())
 
         crowdsale.transact({"from": deploy_address, "value": to_wei(1, "ether")}).buy()
-        crowdsale.transact({"from": deploy_address, "value": to_wei(1, "ether")}).buy()
+        crowdsale.transact({"from": deploy_address}).buyTokensForFiat(deploy_address, 1, 1)
 
         print(crowdsale.call().tokensSold())
 

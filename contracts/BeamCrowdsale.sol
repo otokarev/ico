@@ -110,9 +110,6 @@ contract BeamCrowdsale is Crowdsale {
 
     assignTokens(receiver, tokenAmount);
 
-    // Pocket the money, or fail the crowdsale if we for some reason cannot send the money to our multisig
-    if(!multisigWallet.send(weiAmount)) throw;
-
     // Tell us invest was success
     Invested(receiver, weiAmount, tokenAmount, customerId);
 
