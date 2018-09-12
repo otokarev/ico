@@ -68,10 +68,7 @@
 
     "local": {
       "chain": {
-        "class": "populus.chain.geth.LocalGethChain",
-        "settings": {
-          "rpc_port": "8548"
-        }
+        "class": "populus.chain.ExternalChain"
       },
       "contracts": {
         "backends": {
@@ -93,7 +90,7 @@
         "provider": {
           "class": "web3.providers.rpc.HTTPProvider",
           "settings": {
-            "endpoint_uri": "http://127.0.0.1:8548",
+            "endpoint_uri": "http://10.1.30.50:8545",
             "request_kwargs": {
                 "timeout": 180
             }

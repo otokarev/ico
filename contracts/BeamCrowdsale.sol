@@ -9,7 +9,7 @@ pragma solidity ^0.4.8;
 import "./Crowdsale.sol";
 import "./MintableToken.sol";
 import "./FlatFiatPricing.sol";
-
+import "./KYCPayloadDeserializer.sol";
 
 /**
  * Uncapped ICO crowdsale contract.
@@ -22,7 +22,13 @@ import "./FlatFiatPricing.sol";
  * - No cap
  *
  */
-contract BeamCrowdsale is Crowdsale {
+contract BeamCrowdsale is Crowdsale, KYCPayloadDeserializer {
+
+  /* Server holds the private key to this address to sign incoming buy payloads to signal we have KYC records in the books for these users. */
+  address public signerAddress;
+
+  /* A new server-side signer key was set to be effective */
+  event SignerChanged(address signer);
 
   function BeamCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal) Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal) {
 
@@ -114,5 +120,46 @@ contract BeamCrowdsale is Crowdsale {
     Invested(receiver, weiAmount, tokenAmount, customerId);
 
     return tokenAmount;
+  }
+
+  /**
+   * A token purchase with anti-money laundering
+   *
+   * ©return tokenAmount How many tokens where bought
+   */
+  function buyWithKYCData(bytes32 dataframe, uint8 v, bytes32 r, bytes32 s) public payable returns(address result) {
+
+    uint _tokenAmount;
+    uint multiplier = 10 ** 18;
+
+    // User comes through the server, check that the signature to ensure ther server
+    // side KYC has passed for this customer id and whitelisted Ethereum address
+
+    //bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+    //bytes32 hash = sha3(prefix, dataframe);
+    bytes32 hash = sha3(dataframe);
+
+    //var (whitelistedAddress, customerId, minETH, maxETH, pricingInfo) = getKYCPayload(dataframe);
+
+    // Check that the KYC data is signed by our server
+    //require(ecrecover(hash, v, r, s) == signerAddress);
+
+    // Only whitelisted address can participate the transaction
+    //require(whitelistedAddress == msg.sender);
+
+    // Server gives us information what is the buy price for this user
+    //uint256 tokensTotal = calculateTokens(msg.value, pricingInfo);
+
+    //_tokenAmount = buyTokens(msg.sender, customerId, tokensTotal);
+
+    address addr =  ecrecover(hash, v, r, s);
+    return addr;
+  }
+
+  /// @dev This function can set the server side address
+  /// @param _signerAddress The address derived from server's private key
+  function setSignerAddress(address _signerAddress) onlyOwner {
+    signerAddress = _signerAddress;
+    SignerChanged(signerAddress);
   }
 }

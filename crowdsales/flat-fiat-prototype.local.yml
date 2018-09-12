@@ -4,7 +4,7 @@ testnet:
     # Chain we are connected to.
     # Either "mainnet" or "ropsten".
     # Affects Etherscan verification process only.
-    chain: ganache
+    chain: local
 
     # Do we perform deployed contract source code verification on etherscan.io service.
     # This is a semi automatic process using a Firefox browser.
@@ -62,7 +62,7 @@ testnet:
             #address: "0x6ee1e300e3b50f0d673e33b3cc3ac559101106e3"
             arguments:
                 _owners:
-                    - "0x26e07f588c77fe9cf3936b80d5abfb80aa92ed19"
+                    - "0xf5d5d62711092f04b09547e64b72088d5444d691"
                 _required: 1
         token:
             contract_name: CrowdsaleToken
@@ -119,15 +119,16 @@ testnet:
         token.transact({"from": deploy_address}).setMintAgent(crowdsale.address, True)
 
         # Set actions what happen at the end of the crodsale.
-        crowdsale.transact({"from": deploy_address}).setFinalizeAgent(finalize_agent.address)
-        token.transact({"from": deploy_address}).setReleaseAgent(finalize_agent.address)
+        confirm_tx(crowdsale.transact({"from": deploy_address}).setFinalizeAgent(finalize_agent.address))
+        confirm_tx(token.transact({"from": deploy_address}).setReleaseAgent(finalize_agent.address))
 
         # Set the team multisig address as the upgraade master for the token
         token.transact({"from": deploy_address}).transferOwnership(team_multisig.address)
 
-        # Run test buy() transaction
+        # Get state
         print(crowdsale.call().getState())
 
+        # Run test buy() transaction
         crowdsale.transact({"from": deploy_address, "value": to_wei(1, "ether")}).buy()
         crowdsale.transact({"from": deploy_address}).buyTokensForFiat(deploy_address, 1, 1)
 
@@ -136,11 +137,8 @@ testnet:
         events = crowdsale.pastEvents('Invested').get();
         print(events)
 
-    # Make sure that everything we have deployed all contracts in good state
-    # and their internal state is sane
-    verify_actions: |
         assert crowdsale.call().tokensSold() == 2
         assert crowdsale.call().weiRaised() == to_wei(2, "ether")
-        # assert token.call().owner() == team_multisig.address
-        # assert crowdsale.call().owner() == team_multisig.address
-        # assert crowdsale.call().getState() == CrowdsaleState.Funding
+
+        t = crowdsale.transact({"from": deploy_address}).buyWithKYCData(0x26a61f5984e523466ee7f30d739a183c663e8661774980ade4b1c9b7bbd01caa.to_bytes(32, byteorder="big"), 28, 0xda05769161b9247f0ebb427c971d3408ca61281cf1e572425c825ccd5401437f.to_bytes(32, byteorder="big"), 0x3e26f4b5fa4ada6a0a68eedde056abb1d248706e92985531df24f3ce3488dba1.to_bytes(32, byteorder="big"))
+        print(t)
