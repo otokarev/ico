@@ -1,0 +1,30 @@
+{
+  "name": "tokenmarketnet-ico",
+  "version": "0.1.0",
+  "description": "Ethereum ICO smart contracts and tools for managing token sales",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/otokarev/ico.git"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "security",
+    "zeppelin",
+    "tokenmarketnet"
+  ],
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
