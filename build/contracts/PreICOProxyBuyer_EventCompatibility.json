@@ -1,0 +1,314 @@
+{
+  "contractName": "PreICOProxyBuyer_EventCompatibility",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "investor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "weiAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "customerId",
+          "type": "uint128"
+        }
+      ],
+      "name": "Invested",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a72305820fd0b57072557a3dae2f79f26d0553c4bece9fc88011e4ef55eed01f8708d1cc00029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a72305820fd0b57072557a3dae2f79f26d0553c4bece9fc88011e4ef55eed01f8708d1cc00029",
+  "sourceMap": "385:170:34:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;385:170:34;;;;;;;",
+  "deployedSourceMap": "385:170:34:-;;;;;",
+  "source": "/**\n * This smart contract code is Copyright 2017 TokenMarket Ltd. For more information see https://tokenmarket.net\n *\n * Licensed under the Apache License, version 2.0: https://github.com/TokenMarketNet/ico/blob/master/LICENSE.txt\n */\n\npragma solidity ^0.4.6;\n\n/**\n * ABI compatibility shim to get.\n *\n * You can use this shim to get events out of old PreICOProxyBuyer contracts.\n */\ncontract PreICOProxyBuyer_EventCompatibility {\n\n  /** Somebody loaded their investment money */\n  event Invested(address investor, uint weiAmount, uint128 customerId);\n\n}\n",
+  "sourcePath": "/home/otokarev/work/umbre/ico/contracts/PreICOProxyBuyer_EventCompatibility.sol",
+  "ast": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/PreICOProxyBuyer_EventCompatibility.sol",
+    "exportedSymbols": {
+      "PreICOProxyBuyer_EventCompatibility": [
+        6704
+      ]
+    },
+    "id": 6705,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6695,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "237:23:34"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "ABI compatibility shim to get.\n * You can use this shim to get events out of old PreICOProxyBuyer contracts.",
+        "fullyImplemented": true,
+        "id": 6704,
+        "linearizedBaseContracts": [
+          6704
+        ],
+        "name": "PreICOProxyBuyer_EventCompatibility",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "Somebody loaded their investment money ",
+            "id": 6703,
+            "name": "Invested",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 6702,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6697,
+                  "indexed": false,
+                  "name": "investor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6703,
+                  "src": "498:16:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6696,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6699,
+                  "indexed": false,
+                  "name": "weiAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6703,
+                  "src": "516:14:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6698,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "516:4:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6701,
+                  "indexed": false,
+                  "name": "customerId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6703,
+                  "src": "532:18:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  },
+                  "typeName": {
+                    "id": 6700,
+                    "name": "uint128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "532:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "497:54:34"
+            },
+            "src": "483:69:34"
+          }
+        ],
+        "scope": 6705,
+        "src": "385:170:34"
+      }
+    ],
+    "src": "237:319:34"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/PreICOProxyBuyer_EventCompatibility.sol",
+    "exportedSymbols": {
+      "PreICOProxyBuyer_EventCompatibility": [
+        6704
+      ]
+    },
+    "id": 6705,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6695,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "237:23:34"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "ABI compatibility shim to get.\n * You can use this shim to get events out of old PreICOProxyBuyer contracts.",
+        "fullyImplemented": true,
+        "id": 6704,
+        "linearizedBaseContracts": [
+          6704
+        ],
+        "name": "PreICOProxyBuyer_EventCompatibility",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "Somebody loaded their investment money ",
+            "id": 6703,
+            "name": "Invested",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 6702,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6697,
+                  "indexed": false,
+                  "name": "investor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6703,
+                  "src": "498:16:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6696,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6699,
+                  "indexed": false,
+                  "name": "weiAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6703,
+                  "src": "516:14:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6698,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "516:4:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6701,
+                  "indexed": false,
+                  "name": "customerId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6703,
+                  "src": "532:18:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  },
+                  "typeName": {
+                    "id": 6700,
+                    "name": "uint128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "532:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint128",
+                      "typeString": "uint128"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "497:54:34"
+            },
+            "src": "483:69:34"
+          }
+        ],
+        "scope": 6705,
+        "src": "385:170:34"
+      }
+    ],
+    "src": "237:319:34"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-09-12T21:12:30.152Z"
+}

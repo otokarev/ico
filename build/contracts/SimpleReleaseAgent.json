@@ -1,0 +1,590 @@
+{
+  "contractName": "SimpleReleaseAgent",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "release",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506040516020806101a483398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610121806100836000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806386d1a69f146044575b600080fd5b348015604f57600080fd5b5060566058565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16635f412d4f6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401600060405180830381600087803b15801560dc57600080fd5b505af115801560ef573d6000803e3d6000fd5b505050505600a165627a7a72305820514b567a2b20f38c5cc41d061a71c6fc5ef4d7a9dc6190a079526f2376ce3fb50029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806386d1a69f146044575b600080fd5b348015604f57600080fd5b5060566058565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16635f412d4f6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401600060405180830381600087803b15801560dc57600080fd5b505af115801560ef573d6000803e3d6000fd5b505050505600a165627a7a72305820514b567a2b20f38c5cc41d061a71c6fc5ef4d7a9dc6190a079526f2376ce3fb50029",
+  "sourceMap": "105:200:48:-;;;164:77;8:9:-1;5:2;;;30:1;27;20:12;5:2;164:77:48;;;;;;;;;;;;;;;;;;;;;;;;;;;;;230:6;222:5;;:14;;;;;;;;;;;;;;;;;;164:77;105:200;;;;;;",
+  "deployedSourceMap": "105:200:48:-;;;;;;;;;;;;;;;;;;;;;;;;245:58;;8:9:-1;5:2;;;30:1;27;20:12;5:2;245:58:48;;;;;;;270:5;;;;;;;;;;;:26;;;:28;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;270:28:48;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;270:28:48;;;;245:58::o",
+  "source": "pragma solidity ^0.4.8;\n\nimport \"../ReleasableToken.sol\";\n\n\n/**\n * To test transfer lock up release.\n */\ncontract SimpleReleaseAgent {\n\n  ReleasableToken token;\n\n  function SimpleReleaseAgent(ReleasableToken _token) {\n    token = _token;\n  }\n\n  function release() {\n    token.releaseTokenTransfer();\n  }\n}\n",
+  "sourcePath": "/home/otokarev/work/umbre/ico/contracts/test/SimpleReleaseAgent.sol",
+  "ast": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/test/SimpleReleaseAgent.sol",
+    "exportedSymbols": {
+      "SimpleReleaseAgent": [
+        8678
+      ]
+    },
+    "id": 8679,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8655,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:48"
+      },
+      {
+        "absolutePath": "/home/otokarev/work/umbre/ico/contracts/ReleasableToken.sol",
+        "file": "../ReleasableToken.sol",
+        "id": 8656,
+        "nodeType": "ImportDirective",
+        "scope": 8679,
+        "sourceUnit": 7372,
+        "src": "25:32:48",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "To test transfer lock up release.",
+        "fullyImplemented": true,
+        "id": 8678,
+        "linearizedBaseContracts": [
+          8678
+        ],
+        "name": "SimpleReleaseAgent",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 8658,
+            "name": "token",
+            "nodeType": "VariableDeclaration",
+            "scope": 8678,
+            "src": "138:21:48",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+              "typeString": "contract ReleasableToken"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 8657,
+              "name": "ReleasableToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 7371,
+              "src": "138:15:48",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                "typeString": "contract ReleasableToken"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 8667,
+              "nodeType": "Block",
+              "src": "216:25:48",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 8665,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 8663,
+                      "name": "token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8658,
+                      "src": "222:5:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                        "typeString": "contract ReleasableToken"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 8664,
+                      "name": "_token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8660,
+                      "src": "230:6:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                        "typeString": "contract ReleasableToken"
+                      }
+                    },
+                    "src": "222:14:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                      "typeString": "contract ReleasableToken"
+                    }
+                  },
+                  "id": 8666,
+                  "nodeType": "ExpressionStatement",
+                  "src": "222:14:48"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 8668,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "SimpleReleaseAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8661,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8660,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8668,
+                  "src": "192:22:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                    "typeString": "contract ReleasableToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 8659,
+                    "name": "ReleasableToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7371,
+                    "src": "192:15:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                      "typeString": "contract ReleasableToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "191:24:48"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 8662,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "216:0:48"
+            },
+            "scope": 8678,
+            "src": "164:77:48",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 8676,
+              "nodeType": "Block",
+              "src": "264:39:48",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 8671,
+                        "name": "token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8658,
+                        "src": "270:5:48",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                          "typeString": "contract ReleasableToken"
+                        }
+                      },
+                      "id": 8673,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "releaseTokenTransfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7305,
+                      "src": "270:26:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
+                        "typeString": "function () external"
+                      }
+                    },
+                    "id": 8674,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "270:28:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 8675,
+                  "nodeType": "ExpressionStatement",
+                  "src": "270:28:48"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 8677,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "release",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8669,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "261:2:48"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 8670,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "264:0:48"
+            },
+            "scope": 8678,
+            "src": "245:58:48",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 8679,
+        "src": "105:200:48"
+      }
+    ],
+    "src": "0:306:48"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/test/SimpleReleaseAgent.sol",
+    "exportedSymbols": {
+      "SimpleReleaseAgent": [
+        8678
+      ]
+    },
+    "id": 8679,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8655,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:48"
+      },
+      {
+        "absolutePath": "/home/otokarev/work/umbre/ico/contracts/ReleasableToken.sol",
+        "file": "../ReleasableToken.sol",
+        "id": 8656,
+        "nodeType": "ImportDirective",
+        "scope": 8679,
+        "sourceUnit": 7372,
+        "src": "25:32:48",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "To test transfer lock up release.",
+        "fullyImplemented": true,
+        "id": 8678,
+        "linearizedBaseContracts": [
+          8678
+        ],
+        "name": "SimpleReleaseAgent",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 8658,
+            "name": "token",
+            "nodeType": "VariableDeclaration",
+            "scope": 8678,
+            "src": "138:21:48",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+              "typeString": "contract ReleasableToken"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 8657,
+              "name": "ReleasableToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 7371,
+              "src": "138:15:48",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                "typeString": "contract ReleasableToken"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 8667,
+              "nodeType": "Block",
+              "src": "216:25:48",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 8665,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 8663,
+                      "name": "token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8658,
+                      "src": "222:5:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                        "typeString": "contract ReleasableToken"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 8664,
+                      "name": "_token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8660,
+                      "src": "230:6:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                        "typeString": "contract ReleasableToken"
+                      }
+                    },
+                    "src": "222:14:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                      "typeString": "contract ReleasableToken"
+                    }
+                  },
+                  "id": 8666,
+                  "nodeType": "ExpressionStatement",
+                  "src": "222:14:48"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 8668,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "SimpleReleaseAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8661,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8660,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8668,
+                  "src": "192:22:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                    "typeString": "contract ReleasableToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 8659,
+                    "name": "ReleasableToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7371,
+                    "src": "192:15:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                      "typeString": "contract ReleasableToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "191:24:48"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 8662,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "216:0:48"
+            },
+            "scope": 8678,
+            "src": "164:77:48",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 8676,
+              "nodeType": "Block",
+              "src": "264:39:48",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 8671,
+                        "name": "token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8658,
+                        "src": "270:5:48",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReleasableToken_$7371",
+                          "typeString": "contract ReleasableToken"
+                        }
+                      },
+                      "id": 8673,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "releaseTokenTransfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7305,
+                      "src": "270:26:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
+                        "typeString": "function () external"
+                      }
+                    },
+                    "id": 8674,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "270:28:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 8675,
+                  "nodeType": "ExpressionStatement",
+                  "src": "270:28:48"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 8677,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "release",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8669,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "261:2:48"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 8670,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "264:0:48"
+            },
+            "scope": 8678,
+            "src": "245:58:48",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 8679,
+        "src": "105:200:48"
+      }
+    ],
+    "src": "0:306:48"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-09-12T21:12:30.166Z"
+}

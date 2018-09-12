@@ -1,0 +1,409 @@
+{
+  "contractName": "FractionalERC20",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_who",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "name": "_spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/**\n * This smart contract code is Copyright 2017 TokenMarket Ltd. For more information see https://tokenmarket.net\n *\n * Licensed under the Apache License, version 2.0: https://github.com/TokenMarketNet/ico/blob/master/LICENSE.txt\n */\n\npragma solidity ^0.4.8;\n\nimport \"zeppelin/contracts/token/ERC20/ERC20.sol\";\n\n/**\n * A token that defines fractional units as decimals.\n */\ncontract FractionalERC20 is ERC20 {\n\n  uint public decimals;\n\n}\n",
+  "sourcePath": "/home/otokarev/work/umbre/ico/contracts/FractionalERC20.sol",
+  "ast": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/FractionalERC20.sol",
+    "exportedSymbols": {
+      "FractionalERC20": [
+        3032
+      ]
+    },
+    "id": 3033,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3026,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "237:23:18"
+      },
+      {
+        "absolutePath": "zeppelin/contracts/token/ERC20/ERC20.sol",
+        "file": "zeppelin/contracts/token/ERC20/ERC20.sol",
+        "id": 3027,
+        "nodeType": "ImportDirective",
+        "scope": 3033,
+        "sourceUnit": 9214,
+        "src": "262:50:18",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3028,
+              "name": "ERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9213,
+              "src": "404:5:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC20_$9213",
+                "typeString": "contract ERC20"
+              }
+            },
+            "id": 3029,
+            "nodeType": "InheritanceSpecifier",
+            "src": "404:5:18"
+          }
+        ],
+        "contractDependencies": [
+          9213,
+          9245
+        ],
+        "contractKind": "contract",
+        "documentation": "A token that defines fractional units as decimals.",
+        "fullyImplemented": false,
+        "id": 3032,
+        "linearizedBaseContracts": [
+          3032,
+          9213,
+          9245
+        ],
+        "name": "FractionalERC20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 3031,
+            "name": "decimals",
+            "nodeType": "VariableDeclaration",
+            "scope": 3032,
+            "src": "415:20:18",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3030,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "415:4:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3033,
+        "src": "376:63:18"
+      }
+    ],
+    "src": "237:203:18"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/FractionalERC20.sol",
+    "exportedSymbols": {
+      "FractionalERC20": [
+        3032
+      ]
+    },
+    "id": 3033,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3026,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "237:23:18"
+      },
+      {
+        "absolutePath": "zeppelin/contracts/token/ERC20/ERC20.sol",
+        "file": "zeppelin/contracts/token/ERC20/ERC20.sol",
+        "id": 3027,
+        "nodeType": "ImportDirective",
+        "scope": 3033,
+        "sourceUnit": 9214,
+        "src": "262:50:18",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3028,
+              "name": "ERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9213,
+              "src": "404:5:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC20_$9213",
+                "typeString": "contract ERC20"
+              }
+            },
+            "id": 3029,
+            "nodeType": "InheritanceSpecifier",
+            "src": "404:5:18"
+          }
+        ],
+        "contractDependencies": [
+          9213,
+          9245
+        ],
+        "contractKind": "contract",
+        "documentation": "A token that defines fractional units as decimals.",
+        "fullyImplemented": false,
+        "id": 3032,
+        "linearizedBaseContracts": [
+          3032,
+          9213,
+          9245
+        ],
+        "name": "FractionalERC20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 3031,
+            "name": "decimals",
+            "nodeType": "VariableDeclaration",
+            "scope": 3032,
+            "src": "415:20:18",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3030,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "415:4:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3033,
+        "src": "376:63:18"
+      }
+    ],
+    "src": "237:203:18"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-09-12T21:12:30.127Z"
+}

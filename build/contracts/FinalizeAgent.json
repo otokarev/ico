@@ -1,0 +1,479 @@
+{
+  "contractName": "FinalizeAgent",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isFinalizeAgent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isSane",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "finalizeCrowdsale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/**\n * This smart contract code is Copyright 2017 TokenMarket Ltd. For more information see https://tokenmarket.net\n *\n * Licensed under the Apache License, version 2.0: https://github.com/TokenMarketNet/ico/blob/master/LICENSE.txt\n */\n\npragma solidity ^0.4.6;\n\n/**\n * Finalize agent defines what happens at the end of succeseful crowdsale.\n *\n * - Allocate tokens for founders, bounties and community\n * - Make tokens transferable\n * - etc.\n */\ncontract FinalizeAgent {\n\n  function isFinalizeAgent() public constant returns(bool) {\n    return true;\n  }\n\n  /** Return true if we can run finalizeCrowdsale() properly.\n   *\n   * This is a safety check function that doesn't allow crowdsale to begin\n   * unless the finalizer has been set up properly.\n   */\n  function isSane() public constant returns (bool);\n\n  /** Called once by crowdsale finalize() if the sale was success. */\n  function finalizeCrowdsale();\n\n}\n",
+  "sourcePath": "/home/otokarev/work/umbre/ico/contracts/FinalizeAgent.sol",
+  "ast": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/FinalizeAgent.sol",
+    "exportedSymbols": {
+      "FinalizeAgent": [
+        2871
+      ]
+    },
+    "id": 2872,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2854,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "237:23:15"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "Finalize agent defines what happens at the end of succeseful crowdsale.\n * - Allocate tokens for founders, bounties and community\n- Make tokens transferable\n- etc.",
+        "fullyImplemented": false,
+        "id": 2871,
+        "linearizedBaseContracts": [
+          2871
+        ],
+        "name": "FinalizeAgent",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2861,
+              "nodeType": "Block",
+              "src": "531:22:15",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 2859,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "544:4:15",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 2858,
+                  "id": 2860,
+                  "nodeType": "Return",
+                  "src": "537:11:15"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2862,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isFinalizeAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2855,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "498:2:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2858,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2857,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2862,
+                  "src": "525:4:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2856,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "525:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "524:6:15"
+            },
+            "scope": 2871,
+            "src": "474:79:15",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "Return true if we can run finalizeCrowdsale() properly.\n   * This is a safety check function that doesn't allow crowdsale to begin\nunless the finalizer has been set up properly.",
+            "id": 2867,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isSane",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2863,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "772:2:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2866,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2865,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2867,
+                  "src": "800:4:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2864,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "800:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "799:6:15"
+            },
+            "scope": 2871,
+            "src": "757:49:15",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "Called once by crowdsale finalize() if the sale was success. ",
+            "id": 2870,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "finalizeCrowdsale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2868,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "906:2:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2869,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "908:0:15"
+            },
+            "scope": 2871,
+            "src": "880:29:15",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2872,
+        "src": "446:466:15"
+      }
+    ],
+    "src": "237:676:15"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/otokarev/work/umbre/ico/contracts/FinalizeAgent.sol",
+    "exportedSymbols": {
+      "FinalizeAgent": [
+        2871
+      ]
+    },
+    "id": 2872,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2854,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "237:23:15"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "Finalize agent defines what happens at the end of succeseful crowdsale.\n * - Allocate tokens for founders, bounties and community\n- Make tokens transferable\n- etc.",
+        "fullyImplemented": false,
+        "id": 2871,
+        "linearizedBaseContracts": [
+          2871
+        ],
+        "name": "FinalizeAgent",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2861,
+              "nodeType": "Block",
+              "src": "531:22:15",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 2859,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "544:4:15",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 2858,
+                  "id": 2860,
+                  "nodeType": "Return",
+                  "src": "537:11:15"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2862,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isFinalizeAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2855,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "498:2:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2858,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2857,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2862,
+                  "src": "525:4:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2856,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "525:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "524:6:15"
+            },
+            "scope": 2871,
+            "src": "474:79:15",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "Return true if we can run finalizeCrowdsale() properly.\n   * This is a safety check function that doesn't allow crowdsale to begin\nunless the finalizer has been set up properly.",
+            "id": 2867,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isSane",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2863,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "772:2:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2866,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2865,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2867,
+                  "src": "800:4:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2864,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "800:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "799:6:15"
+            },
+            "scope": 2871,
+            "src": "757:49:15",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "Called once by crowdsale finalize() if the sale was success. ",
+            "id": 2870,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "finalizeCrowdsale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2868,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "906:2:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2869,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "908:0:15"
+            },
+            "scope": 2871,
+            "src": "880:29:15",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2872,
+        "src": "446:466:15"
+      }
+    ],
+    "src": "237:676:15"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-09-12T21:12:30.125Z"
+}

@@ -9,7 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-build/
+# build/
 develop-eggs/
 dist/
 downloads/
@@ -64,7 +64,7 @@ target/
 chains/*
 eireg/chains/*
 venv
-build
+# build
 
 # Where Populus has deployed contracts
 registrar.json
